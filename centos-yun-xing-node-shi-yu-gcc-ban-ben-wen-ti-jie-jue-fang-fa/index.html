@@ -1,0 +1,235 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>centos运行node时 与 gcc版本问题解决方法 | Piokto</title>
+<link rel="shortcut icon" href="https://piokto.github.io/favicon.ico?v=1658978207881">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://piokto.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="centos运行node时 与 gcc版本问题解决方法 | Piokto - Atom Feed" href="https://piokto.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+centos node 与 gcc版本问题解决方法 缺少CXXABI_1.3.8
+
+
+您需要安装支持 CXXABI_1.3.8 的 gcc 版本。
+
+首先看看你当前的版本，运行：
+gcc -v
+在您的机器中找到 c++ 标准库，运行：
+s..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://piokto.github.io">
+  <img class="avatar" src="https://piokto.github.io/images/avatar.png?v=1658978207881" alt="">
+  </a>
+  <h1 class="site-title">
+    Piokto
+  </h1>
+  <p class="site-description">
+    To Be More Freedom
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/piokto" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://weibo.com/fadedream1224" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              centos运行node时 与 gcc版本问题解决方法
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-07-25
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <blockquote>
+<p>centos node 与 gcc版本问题解决方法 缺少CXXABI_1.3.8</p>
+</blockquote>
+<blockquote>
+<p>您需要安装支持 CXXABI_1.3.8 的 gcc 版本。</p>
+</blockquote>
+<h3 id="首先看看你当前的版本运行">首先看看你当前的版本，运行：</h3>
+<p>gcc -v</p>
+<h3 id="在您的机器中找到-c-标准库运行">在您的机器中找到 c++ 标准库，运行：</h3>
+<pre><code class="language-shell">sudo find / -name 'libstdc++.so.6'
+</code></pre>
+<h3 id="看看你的gcc库运行">看看你的gcc库，运行：</h3>
+<pre><code class="language-shell">strings /lib64/libstdc++.so.6 | grep '^CXXABI_'
+</code></pre>
+<h3 id="按照以下说明编译新版本的-gcc">按照以下说明编译新版本的 gcc：</h3>
+<h3 id="安装依赖项">安装依赖项</h3>
+<pre><code class="language-shell">sudo yum check-update
+sudo yum -y install wget make gcc-c++
+</code></pre>
+<h3 id="下载gcc新版本">下载gcc新版本</h3>
+<pre><code class="language-shell">wget -O - 'https://ftpmirror.gnu.org/gcc/gcc-7.3.0/gcc-7.3.0.tar.xz' | tar -xJ
+</code></pre>
+<h3 id="运行">运行</h3>
+<pre><code class="language-shell">sed -i 's/ftp:/https:/' ./gcc-7.3.0/contrib/download_prerequisites
+</code></pre>
+<h3 id="最后编译gcc">最后编译gcc</h3>
+<pre><code class="language-shell">cd gcc-7.3.0 &amp;&amp; ./contrib/download_prerequisites &amp;&amp; mkdir build &amp;&amp; cd build &amp;&amp; ../configure --enable-checking=release --enable-languages=c,c++ --disable-multilib &amp;&amp; make -j 8 &amp;&amp; sudo make install ) &amp;&amp; rm -fR gcc-7.3.0
+</code></pre>
+<h3 id="取消链接当前版本">取消链接当前版本</h3>
+<pre><code class="language-shell">sudo unlink /usr/lib64/libstdc++.so.6
+</code></pre>
+<h3 id="复制新版本">复制新版本</h3>
+<pre><code class="language-shell">sudo cp /usr/local/lib64/libstdc++.so.6 /usr/lib64
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%A6%96%E5%85%88%E7%9C%8B%E7%9C%8B%E4%BD%A0%E5%BD%93%E5%89%8D%E7%9A%84%E7%89%88%E6%9C%AC%E8%BF%90%E8%A1%8C">首先看看你当前的版本，运行：</a></li>
+<li><a href="#%E5%9C%A8%E6%82%A8%E7%9A%84%E6%9C%BA%E5%99%A8%E4%B8%AD%E6%89%BE%E5%88%B0-c-%E6%A0%87%E5%87%86%E5%BA%93%E8%BF%90%E8%A1%8C">在您的机器中找到 c++ 标准库，运行：</a></li>
+<li><a href="#%E7%9C%8B%E7%9C%8B%E4%BD%A0%E7%9A%84gcc%E5%BA%93%E8%BF%90%E8%A1%8C">看看你的gcc库，运行：</a></li>
+<li><a href="#%E6%8C%89%E7%85%A7%E4%BB%A5%E4%B8%8B%E8%AF%B4%E6%98%8E%E7%BC%96%E8%AF%91%E6%96%B0%E7%89%88%E6%9C%AC%E7%9A%84-gcc">按照以下说明编译新版本的 gcc：</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E9%A1%B9">安装依赖项</a></li>
+<li><a href="#%E4%B8%8B%E8%BD%BDgcc%E6%96%B0%E7%89%88%E6%9C%AC">下载gcc新版本</a></li>
+<li><a href="#%E8%BF%90%E8%A1%8C">运行</a></li>
+<li><a href="#%E6%9C%80%E5%90%8E%E7%BC%96%E8%AF%91gcc">最后编译gcc</a></li>
+<li><a href="#%E5%8F%96%E6%B6%88%E9%93%BE%E6%8E%A5%E5%BD%93%E5%89%8D%E7%89%88%E6%9C%AC">取消链接当前版本</a></li>
+<li><a href="#%E5%A4%8D%E5%88%B6%E6%96%B0%E7%89%88%E6%9C%AC">复制新版本</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://piokto.github.io/da-jian-cc-gong-ji-wu-yan-zheng-de-cloudlflare-zhan-dian/">
+              <h3 class="post-title">
+                搭建 cc攻击 无验证的cloudlflare站点
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://piokto.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

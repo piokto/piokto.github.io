@@ -1,0 +1,191 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>XrayR后端一键脚本（备份） | Piokto</title>
+<link rel="shortcut icon" href="https://piokto.github.io/favicon.ico?v=1658978207881">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://piokto.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="XrayR后端一键脚本（备份） | Piokto - Atom Feed" href="https://piokto.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="XrayR 0.8.2.7
+（优化内存占用修改版）
+bash &lt;(curl -Ls https://raw.githubusercontent.com/akiiya/XrayR-script/master/install.sh)
+
+X..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://piokto.github.io">
+  <img class="avatar" src="https://piokto.github.io/images/avatar.png?v=1658978207881" alt="">
+  </a>
+  <h1 class="site-title">
+    Piokto
+  </h1>
+  <p class="site-description">
+    To Be More Freedom
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/piokto" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://weibo.com/fadedream1224" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              XrayR后端一键脚本（备份）
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-07-28
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p>XrayR 0.8.2.7<br>
+（优化内存占用修改版）</p>
+<pre><code class="language-shell">bash &lt;(curl -Ls https://raw.githubusercontent.com/akiiya/XrayR-script/master/install.sh)
+</code></pre>
+<p>XrayR 0.9.0<br>
+（非官方版本号） 大规模优化版</p>
+<pre><code class="language-shell">bash &lt;(curl -Ls https://raw.githubusercontent.com/straint/XrayR-script/master/install.sh)
+</code></pre>
+<p>XrayR 0.8.2.6 V2BX<br>
+（大佬修改版 减少50%内存占用 但CPU消耗略有上升）</p>
+<pre><code class="language-shell">wget -N https://raw.githubusercontent.com/Yuzuki616/V2bX-script/master/install.sh &amp;&amp; bash install.sh
+</code></pre>
+<p>XrayR 0.8.2.6 官方原版</p>
+<pre><code class="language-shell">bash &lt;(curl -Ls https://raw.githubusercontent.com/newxrayr/XrayR-script/main/install.sh)
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://piokto.github.io/centos-yun-xing-node-shi-yu-gcc-ban-ben-wen-ti-jie-jue-fang-fa/">
+              <h3 class="post-title">
+                centos运行node时 与 gcc版本问题解决方法
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://piokto.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
